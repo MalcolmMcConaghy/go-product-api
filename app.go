@@ -139,8 +139,7 @@ func respondWithJSON(w http.ResponseWriter, code int, payload interface{}) {
 }
 
 func (a *App) Initialize(user, password, dbname string) {
-	connStr :=
-		fmt.Sprintf("user=%s password=%s dbname=%s sslmode=disable", user, password, dbname)
+	connStr := "user=postgres password=Malkyway969!?! dbname=goproductapi sslmode=disable"
 
 	var err error
 	a.DB, err = sql.Open("postgres", connStr)
@@ -154,5 +153,6 @@ func (a *App) Initialize(user, password, dbname string) {
 }
 
 func (a *App) Run(addr string) {
-	log.Fatal(http.ListenAndServe(":8010", a.Router))
+	fmt.Printf("Server is now running on localhost%s", addr)
+	log.Fatal(http.ListenAndServe(addr, a.Router))
 }
